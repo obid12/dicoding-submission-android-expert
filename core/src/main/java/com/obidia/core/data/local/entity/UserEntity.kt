@@ -35,11 +35,5 @@ data class UserEntity(
         model.login
       )
     }
-
-    fun transform(model: UserEntity): UserModel = UserModel(
-      model.userId,
-      model.avatarUrl,
-      model.login
-    )
   }
 }

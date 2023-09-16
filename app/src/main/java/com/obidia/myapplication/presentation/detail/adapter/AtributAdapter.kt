@@ -6,17 +6,17 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.obidia.myapplication.databinding.ItemAtributeBinding
+import com.obidia.myapplication.presentation.detail.DetailModel.AttributeModel
 import com.obidia.myapplication.presentation.detail.viewholder.AtributViewHolder
-import com.obidia.myapplication.presentation.detail.DetailModel.AtributModel
 
-class AtributAdapter : ListAdapter<AtributModel, ViewHolder>(DiffCallBack) {
-  object DiffCallBack : DiffUtil.ItemCallback<AtributModel>() {
+class AttributeAdapter : ListAdapter<AttributeModel, ViewHolder>(DiffCallBack) {
+  object DiffCallBack : DiffUtil.ItemCallback<AttributeModel>() {
 
-    override fun areItemsTheSame(oldItem: AtributModel, newItem: AtributModel): Boolean {
+    override fun areItemsTheSame(oldItem: AttributeModel, newItem: AttributeModel): Boolean {
       return oldItem.hashCode() == newItem.hashCode()
     }
 
-    override fun areContentsTheSame(oldItem: AtributModel, newItem: AtributModel): Boolean {
+    override fun areContentsTheSame(oldItem: AttributeModel, newItem: AttributeModel): Boolean {
       return oldItem.hashCode() == newItem.hashCode()
     }
   }
@@ -28,7 +28,7 @@ class AtributAdapter : ListAdapter<AtributModel, ViewHolder>(DiffCallBack) {
   }
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-    val data = getItem(position) as AtributModel
+    val data = getItem(position) as AttributeModel
     (holder as AtributViewHolder).bind(data)
   }
 }

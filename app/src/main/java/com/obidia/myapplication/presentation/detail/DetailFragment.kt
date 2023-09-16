@@ -25,7 +25,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.obidia.core.domain.model.UserDetailEntity
 import com.obidia.core.domain.model.UserModel
 import com.obidia.core.utils.Resource
-import com.obidia.core.utils.error
 import com.obidia.core.utils.replaceIfNull
 import com.obidia.core.utils.success
 import com.obidia.myapplication.MainActivity
@@ -34,7 +33,7 @@ import com.obidia.myapplication.R.layout
 import com.obidia.myapplication.R.string
 import com.obidia.myapplication.databinding.FragmentDetailBinding
 import com.obidia.myapplication.presentation.detail.DetailModel.TabDetailModel
-import com.obidia.myapplication.presentation.detail.adapter.AtributAdapter
+import com.obidia.myapplication.presentation.detail.adapter.AttributeAdapter
 import com.obidia.myapplication.presentation.detail.adapter.CategoryAdapter
 import com.obidia.myapplication.presentation.detail.follow.FollowFragment
 import com.obidia.myapplication.util.ShimmerAdapter
@@ -48,9 +47,9 @@ import kotlinx.coroutines.launch
 class DetailFragment : Fragment() {
 
   private lateinit var binding: FragmentDetailBinding
-  lateinit var atributAdapter: AtributAdapter
+  private lateinit var attributeAdapter: AttributeAdapter
   private val viewModel: DetailViewModel by viewModels()
-  lateinit var categoryAdapter: CategoryAdapter
+  private lateinit var categoryAdapter: CategoryAdapter
   private val args by navArgs<DetailFragmentArgs>()
 
   lateinit var model: DetailModel
@@ -127,13 +126,13 @@ class DetailFragment : Fragment() {
 
   private fun setupAdapterInfo(rv: RecyclerView, data: UserDetailEntity?) {
     rv.let {
-      atributAdapter = AtributAdapter()
-      atributAdapter.submitList(
+      attributeAdapter = AttributeAdapter()
+      attributeAdapter.submitList(
         model.transform(
           data?.repository.toString(), data?.follower.toString(), data?.following.toString()
         )
       )
-      it.adapter = atributAdapter
+      it.adapter = attributeAdapter
       it.layoutManager = FlexboxLayoutManager(requireContext()).apply {
         justifyContent = JustifyContent.SPACE_EVENLY
         alignItems = AlignItems.CENTER
@@ -197,8 +196,7 @@ class DetailFragment : Fragment() {
             }
 
             is Resource.Error -> {
-              state.error { data ->
-              }
+
             }
 
             else -> {}
