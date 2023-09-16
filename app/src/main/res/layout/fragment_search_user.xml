@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.home.HomeFragment"
+    >
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/til_search"
+      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+      android:layout_width="0dp"
+      android:layout_marginTop="@dimen/spacing_normal"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/spacing_small"
+      android:layout_marginEnd="@dimen/spacing_24"
+      android:hint="Masukan"
+      android:textColorHint="@color/neutral_00"
+      app:boxBackgroundColor="@color/neutral_80"
+      app:boxCornerRadiusBottomEnd="@dimen/spacing_small"
+      app:boxCornerRadiusBottomStart="@dimen/spacing_small"
+      app:boxCornerRadiusTopEnd="@dimen/spacing_small"
+      app:boxCornerRadiusTopStart="@dimen/spacing_small"
+      app:boxStrokeColor="@color/neutral_00"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/icon_back"
+      app:layout_constraintTop_toTopOf="parent"
+      >
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_search"
+        style="@style/EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:maxLength="12"
+        android:paddingHorizontal="10dp"
+        android:textColor="@color/neutral_00"
+        android:textColorHint="@color/neutral_00"
+        android:textSize="@dimen/font_small"
+        />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <ImageView
+      android:id="@+id/icon_delete"
+      android:layout_width="@dimen/spacing_24"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/spacing_small"
+      android:adjustViewBounds="true"
+      android:cropToPadding="false"
+      android:scaleType="fitCenter"
+      android:src="@drawable/ic_close"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="@+id/til_search"
+      app:layout_constraintEnd_toEndOf="@id/til_search"
+      app:layout_constraintTop_toTopOf="@+id/til_search"
+      app:tint="@color/neutral_00"
+      tools:ignore="ContentDescription"
+      tools:visibility="visible"
+      />
+
+  <ImageView
+      android:id="@+id/icon_back"
+      android:layout_width="42dp"
+      android:layout_height="42dp"
+      android:layout_marginStart="@dimen/spacing_normal"
+      android:adjustViewBounds="true"
+      android:scaleType="fitCenter"
+      android:src="@drawable/ic_back"
+      app:layout_constraintBottom_toBottomOf="@+id/til_search"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/til_search"
+      app:tint="@color/neutral_00"
+      tools:ignore="ContentDescription"
+      tools:visibility="visible"
+      />
+
+  <View
+      android:id="@+id/view"
+      android:layout_width="match_parent"
+      android:layout_height="2dp"
+      android:layout_marginTop="@dimen/spacing_normal"
+      android:background="@color/grey"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/til_search"
+      />
+
+  <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+      android:visibility="gone"
+      android:id="@+id/swipe_refresh"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/view"
+      >
+
+    <ViewAnimator
+        android:id="@+id/animator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_github_user"
+        >
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rv_user_shimmer"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          tools:listitem="@layout/shimmer_item_search_user"
+          />
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rv_user"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          tools:listitem="@layout/item_github_user"
+          />
+    </ViewAnimator>
+
+  </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+  <fragment
+      android:id="@+id/homeFragment"
+      android:name="com.obidia.myapplication.presentation.home.HomeFragment"
+      android:label="fragment_home"
+      tools:layout="@layout/fragment_home">
+    <action
+        android:id="@+id/action_homeFragment_to_detailFragment"
+        app:destination="@id/detailFragment" />
+    <action
+        android:id="@+id/action_homeFragment_to_searchUserFragment"
+        app:destination="@id/searchUserFragment" />
+  </fragment>
+  <fragment
+      android:id="@+id/detailFragment"
+      android:name="com.obidia.myapplication.presentation.detail.DetailFragment"
+      android:label="fragment_detail"
+      tools:layout="@layout/fragment_detail">
+    <argument
+        android:name="isFromBottomSheet"
+        android:defaultValue="true"
+        app:argType="boolean" />
+    <argument
+        android:name="userName"
+        android:defaultValue="obid12"
+        app:argType="string"
+        app:nullable="true" />
+    <argument
+        android:name="avatarUrl"
+        android:defaultValue='""'
+        app:argType="string"
+        app:nullable="true" />
+    <deepLink
+        android:id="@+id/deepLink"
+        app:uri="android-app://com.obidia.app/detail_fragment/{isFromBottomSheet}?userName={userName}&amp;avatarUrl={avatarUrl}" />
+    <action
+        android:id="@+id/action_detailFragment_to_nav_graph"
+        app:destination="@id/nav_graph"
+        app:popUpTo="@id/nav_graph" />
+  </fragment>
+  <fragment
+      android:id="@+id/searchUserFragment"
+      android:name="com.obidia.myapplication.presentation.search.SearchUserFragment"
+      android:label="SearchUserFragment" >
+    <action
+        android:id="@+id/action_searchUserFragment_to_detailFragment"
+        app:destination="@id/detailFragment" />
+  </fragment>
+
+  <include-dynamic
+      android:id="@+id/favGraph"
+      android:label="NavGraphFavorite"
+      app:graphResName="fav_nav_graph"
+      app:moduleName="favorite">
+    <action
+        android:id="@+id/action_fav_graph_to_detailFragment"
+        app:destination="@id/detailFragment" />
+
+  </include-dynamic>
+</navigation>

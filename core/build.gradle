@@ -1,0 +1,81 @@
+plugins {
+  id 'com.android.library'
+  id 'org.jetbrains.kotlin.android'
+  id 'kotlin-parcelize'
+  id 'kotlin-kapt'
+}
+
+android {
+  namespace 'com.obidia.core'
+  compileSdk 33
+
+  defaultConfig {
+    minSdk 24
+    targetSdk 33
+
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    buildConfigField 'String', 'API_BASE_URL', '"https://api.github.com/"'
+    consumerProguardFiles "consumer-rules.pro"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_18
+    targetCompatibility JavaVersion.VERSION_18
+  }
+  kotlinOptions {
+    jvmTarget = '18'
+  }
+  buildFeatures {
+    buildConfig = true
+  }
+}
+
+dependencies {
+  implementation 'androidx.core:core-ktx:1.8.0'
+  implementation 'androidx.appcompat:appcompat:1.6.1'
+  implementation 'com.google.android.material:material:1.9.0'
+  testImplementation 'junit:junit:4.13.2'
+  androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+  androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+  //room
+  implementation "androidx.room:room-runtime:2.5.2"
+  implementation "androidx.room:room-ktx:2.5.2"
+  kapt "androidx.room:room-compiler:2.5.2"
+  androidTestImplementation "androidx.room:room-testing:2.5.2"
+
+  // Moshi
+  implementation 'com.squareup.moshi:moshi-kotlin:1.13.0'
+
+  // Retrofit with Moshi Converter
+  implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+  implementation 'com.google.code.gson:gson:2.9.1'
+  implementation "com.squareup.retrofit2:retrofit:2.9.0"
+  implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+  implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
+
+  // HTTP Inspector
+  debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+  releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
+  implementation 'com.auth0.android:jwtdecode:2.0.1'
+
+  // Dependency Injection
+  implementation 'com.google.dagger:hilt-android:2.43.2'
+  kapt 'com.google.dagger:hilt-compiler:2.43.2'
+
+  //Shimmer
+  implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+  // Coil
+  implementation "io.coil-kt:coil:2.1.0"
+  implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+  //view binding
+  implementation 'com.android.databinding:viewbinding:8.1.1'
+}

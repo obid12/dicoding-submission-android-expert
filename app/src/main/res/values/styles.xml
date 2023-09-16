@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- New Text Styles -->
+  <style name="Font">
+    <item name="android:textColor">@color/neutral_00</item>
+  </style>
+
+  <!-- Font Medium -->
+  <style name="Font.Medium" parent="Font">
+    <item name="android:fontFamily">@font/font_medium</item>
+  </style>
+
+  <style name="Font.Medium.XS" parent="Font.Medium">
+    <item name="android:textSize">@dimen/font_extra_small</item>
+  </style>
+
+  <style name="Font.Medium.S" parent="Font.Medium">
+    <item name="android:textSize">@dimen/font_small</item>
+  </style>
+
+  <style name="Font.Medium.M" parent="Font.Medium">
+    <item name="android:textSize">@dimen/font_medium</item>
+  </style>
+
+  <style name="Font.Medium.L" parent="Font.Medium">
+    <item name="android:textSize">@dimen/font_large</item>
+  </style>
+
+  <style name="Font.Medium.DS" parent="Font.Medium">
+    <item name="android:textSize">@dimen/font_display_small</item>
+  </style>
+
+  <style name="Font.Medium.DM" parent="Font.Medium">
+    <item name="android:textSize">@dimen/font_display_medium</item>
+  </style>
+
+  <style name="Font.Medium.DL" parent="Font.Medium">
+    <item name="android:textSize">@dimen/font_display_large</item>
+  </style>
+  <!-- End Font Medium -->
+
+  <!-- Font Bold -->
+  <style name="Font.Bold" parent="Font">
+    <item name="android:fontFamily">@font/font_bold</item>
+  </style>
+
+  <style name="Font.Bold.XS" parent="Font.Bold">
+    <item name="android:textSize">@dimen/font_extra_small</item>
+  </style>
+
+  <style name="Font.Bold.S" parent="Font.Bold">
+    <item name="android:textSize">@dimen/font_small</item>
+  </style>
+
+  <style name="Font.Bold.M" parent="Font.Bold">
+    <item name="android:textSize">@dimen/font_medium</item>
+  </style>
+
+  <style name="Font.Bold.L" parent="Font.Bold">
+    <item name="android:textSize">@dimen/font_large</item>
+  </style>
+
+  <style name="Font.Bold.DS" parent="Font.Bold">
+    <item name="android:textSize">@dimen/font_display_small</item>
+  </style>
+
+  <style name="Font.Bold.DM" parent="Font.Bold">
+    <item name="android:textSize">@dimen/font_display_medium</item>
+  </style>
+
+  <style name="Font.Bold.DL" parent="Font.Bold">
+    <item name="android:textSize">@dimen/font_display_large</item>
+  </style>
+  
+  <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+    <item name="android:width">0dp</item>
+    <item name="android:height">0dp</item>
+  </style>
+
+  <style name="EditText">
+    <item name="android:singleLine">true</item>
+    <item name="android:imeOptions">actionNext</item>
+    <item name="android:textSize">@dimen/font_medium</item>
+    <item name="android:fontFamily">@font/font_medium</item>
+  </style>
+</resources>
