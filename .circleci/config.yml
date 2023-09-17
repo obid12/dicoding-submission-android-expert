@@ -6,10 +6,10 @@ orbs:
 jobs:
   build:
     executor: android/android
+    environment:
+      ANDROID_HOME: 'C:\\Users\\GLI\\AppData\\Local\\Android\\Sdk'
     steps:
       - checkout
-      - environment:
-            ANDROID_HOME: 'C:\\Users\\GLI\\AppData\\Local\\Android\\Sdk'
       - restore_cache:
           key: android-orb-v1-
       - run:
