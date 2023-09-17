@@ -11,11 +11,21 @@ jobs:
       - run:
           name: Install OpenJDK 17
           command: |
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B53DC80D13EDEF05
-            sudo apt-get update && sudo apt-get install openjdk-17-jdk
-            sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
-            sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
+            sudo apt-get update
+            sudo apt-get install -y apt-transport-https ca-certificates wget dirmngr gnupg software-properties-common
+            wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
+            sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+            sudo apt-get update
+            sudo apt-get install -y adoptopenjdk-17-hotspot
+            export JAVA_HOME=/usr/lib/jvm/adoptopenjdk-17-hotspot-amd64
             java -version
+#          name: Install OpenJDK 17
+#          command: |
+#            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B53DC80D13EDEF05
+#            sudo apt-get update && sudo apt-get install openjdk-17-jdk
+#            sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+#            sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
+#            java -version
       #      - run:
       #          name: Set up JDK 17
       #          command: echo 'export JAVA_HOME=C:\tools\jdk\jdk-17.0.8.7-hotspot\' >> $BASH_ENV
