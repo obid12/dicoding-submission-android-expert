@@ -8,6 +8,8 @@ jobs:
     executor: android/android
     steps:
       - checkout
+      - environment:
+            ANDROID_HOME: 'C:\\Users\\GLI\\AppData\\Local\\Android\\Sdk'
       - restore_cache:
           key: android-orb-v1-
       - run:
