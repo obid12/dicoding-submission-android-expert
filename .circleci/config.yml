@@ -11,14 +11,32 @@ jobs:
       - run:
           name: Install OpenJDK 17
           command: |
+            # Install OpenJDK 17
             sudo apt-get update
-            sudo apt-get install -y apt-transport-https ca-certificates wget dirmngr gnupg software-properties-common
-            wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
-            sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
-            sudo apt-get update
-            sudo apt-get install -y adoptopenjdk-17-hotspot
-            export JAVA_HOME=/usr/lib/jvm/adoptopenjdk-17-hotspot-amd64
+            sudo apt-get install -y openjdk-17-jdk
+            
+            # Install Google Cloud SDK
+            export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+            echo "deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+            curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+            sudo apt-get update && sudo apt-get install -y google-cloud-sdk
+            
+            # Set environment variables (adjust as needed)
+            export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+            export PATH=$PATH:$JAVA_HOME/bin
+            
+            # Verify installations
             java -version
+            gcloud version
+#          command: |
+#            sudo apt-get update
+#            sudo apt-get install -y apt-transport-https ca-certificates wget dirmngr gnupg software-properties-common
+#            wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
+#            sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+#            sudo apt-get update
+#            sudo apt-get install -y adoptopenjdk-17-hotspot
+#            export JAVA_HOME=/usr/lib/jvm/adoptopenjdk-17-hotspot-amd64
+#            java -version
 #          name: Install OpenJDK 17
 #          command: |
 #            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B53DC80D13EDEF05
