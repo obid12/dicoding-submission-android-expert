@@ -8,6 +8,8 @@ jobs:
     executor: android/android
     steps:
       - checkout
+      - restore_cache:
+          key: android-orb-v1-
       - run:
           name: Install OpenJDK 17
           command: |
@@ -15,8 +17,6 @@ jobs:
             sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
             sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
             java -version
-      - restore_cache:
-          key: android-orb-v1-
       - run:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
