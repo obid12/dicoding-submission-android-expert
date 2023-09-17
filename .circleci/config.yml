@@ -6,9 +6,6 @@ orbs:
 jobs:
   build:
     executor: android/android
-    environment:
-      ANDROID_HOME: 'C\:\\Users\\GLI\\AppData\\Local\\Android\\Sdk'
-      JAVA_HOME: '/Users/GLI/.jdks/corretto-17.0.8.1'
     steps:
       - checkout
 #      - run:
