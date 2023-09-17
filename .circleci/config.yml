@@ -15,8 +15,6 @@ jobs:
           command: |
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B53DC80D13EDEF05
             sudo apt-get update && sudo apt-get install openjdk-17-jdk
-            # sudo update-alternatives --set java /Users/GLI/java-17-openjdk-amd64/bin/java
-            # sudo update-alternatives --set javac /Users/GLI/java-17-openjdk-amd64/bin/javac
             java -version
       - run:
           name: Chmod permissions
