@@ -8,9 +8,16 @@ jobs:
     executor: android/android
     steps:
       - checkout
-#      - run:
-#          name: Set up JDK 17
-#          command: echo 'export JAVA_HOME=C:\tools\jdk\jdk-17.0.8.7-hotspot\' >> $BASH_ENV
+      - run:
+          name: Install OpenJDK 17
+          command: |
+            sudo apt-get update && sudo apt-get install openjdk-17-jdk
+            sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+            sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
+            java -version
+      #      - run:
+      #          name: Set up JDK 17
+      #          command: echo 'export JAVA_HOME=C:\tools\jdk\jdk-17.0.8.7-hotspot\' >> $BASH_ENV
       - run:
           name: Verify JDK Version
           command: java -version
