@@ -29,16 +29,27 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-  private lateinit var binding: FragmentHomeBinding
+  private var _binding: FragmentHomeBinding? = null
+  private val binding get() = _binding!!
+
   private var adapter: UserSearchAdapter? = null
 
+  private var adapterShimmer: ShimmerAdapter? = null
+
   private val viewModel: HomeViewModel by viewModels()
+
+  override fun onDestroy() {
+    super.onDestroy()
+    _binding = null
+    adapter = null
+    adapterShimmer = null
+  }
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+    _binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
     setupAdapter()
     setupShimmerAdapter()
     observe()
@@ -55,10 +66,10 @@ class HomeFragment : Fragment() {
 
 
   private fun setupShimmerAdapter() {
-    val adapter = ShimmerAdapter(layout.shimmer_item_search_user, 10)
+    adapterShimmer = ShimmerAdapter(layout.shimmer_item_search_user, 10)
     binding.rvUserShimmer.let {
       it.layoutManager = LinearLayoutManager(requireContext())
-      it.adapter = adapter
+      it.adapter = adapterShimmer
     }
   }
 
@@ -99,6 +110,8 @@ class HomeFragment : Fragment() {
               state.error {
               }
             }
+
+            else -> {}
           }
         }
       }

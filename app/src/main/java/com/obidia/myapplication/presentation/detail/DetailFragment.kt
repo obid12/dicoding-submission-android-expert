@@ -46,10 +46,11 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
 
-  private lateinit var binding: FragmentDetailBinding
-  private lateinit var attributeAdapter: AttributeAdapter
+  private var _binding: FragmentDetailBinding? = null
+  private val binding get() = _binding!!
+  private var attributeAdapter: AttributeAdapter? = null
   private val viewModel: DetailViewModel by viewModels()
-  private lateinit var categoryAdapter: CategoryAdapter
+  private var categoryAdapter: CategoryAdapter? = null
   private val args by navArgs<DetailFragmentArgs>()
 
   lateinit var model: DetailModel
@@ -57,7 +58,7 @@ class DetailFragment : Fragment() {
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
   ): View {
-    binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
+    _binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
     model = DetailModel()
 
     loadData()
@@ -67,8 +68,14 @@ class DetailFragment : Fragment() {
     setupToolBar()
     setupShimmerAdapter()
     setBottomNavigation(args.isFromBottomSheet)
-
     return binding.root
+  }
+
+  override fun onDestroy() {
+    super.onDestroy()
+    _binding = null
+    attributeAdapter = null
+    categoryAdapter = null
   }
 
   private fun loadDataFavorite() {
@@ -113,7 +120,7 @@ class DetailFragment : Fragment() {
     }
 
     TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
-      tab.text = categoryAdapter.getTabName(position)
+      tab.text = categoryAdapter?.getTabName(position)
     }.attach()
 
     binding.viewPager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
@@ -127,7 +134,7 @@ class DetailFragment : Fragment() {
   private fun setupAdapterInfo(rv: RecyclerView, data: UserDetailEntity?) {
     rv.let {
       attributeAdapter = AttributeAdapter()
-      attributeAdapter.submitList(
+      attributeAdapter?.submitList(
         model.transform(
           data?.repository.toString(), data?.follower.toString(), data?.following.toString()
         )

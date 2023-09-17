@@ -8,6 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -19,6 +20,11 @@ object NetworkModule {
 
   @Provides
   fun provideRetrofit(okHttp: OkHttpClient, @ApplicationContext context: Context): Retrofit {
+    val hostname = "api.github.com"
+    val certificatePinner = CertificatePinner.Builder()
+      .add(hostname, "sha256/jFaeVpA8UQuidlJkkpIdq3MPwD0m8XbuCRbJlezysBE=")
+      .add(hostname, "sha256/Jg78dOE+fydIGk19swWwiypUSR6HWZybfnJG/8G7pyM=")
+      .build()
     return Retrofit.Builder().apply {
       addConverterFactory(GsonConverterFactory.create())
       client(
@@ -28,7 +34,7 @@ object NetworkModule {
             .redactHeaders(emptySet())
             .alwaysReadResponseBody(false)
             .build()
-        ).build()
+        ).certificatePinner(certificatePinner).build()
       )
       baseUrl(BuildConfig.API_BASE_URL)
     }.build()
