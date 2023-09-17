@@ -2,6 +2,8 @@ version: 2.1
 
 orbs:
   android: circleci/android@0.2.1
+environment:
+  ANDROID_HOME: C\:\\Users\\GLI\\AppData\\Local\\Android\\Sdk
 
 jobs:
   build:
