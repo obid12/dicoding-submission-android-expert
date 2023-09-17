@@ -70,6 +70,7 @@
                   android:layout_marginStart="@dimen/spacing_small"
                   android:layout_marginTop="@dimen/spacing_small"
                   android:src="@drawable/ic_favorite_outline"
+                  android:contentDescription="@string/content_description_image_view"
                   />
 
               <de.hdodenhof.circleimageview.CircleImageView

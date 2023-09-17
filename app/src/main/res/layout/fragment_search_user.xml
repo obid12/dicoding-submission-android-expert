@@ -15,7 +15,7 @@
       android:layout_height="wrap_content"
       android:layout_marginStart="@dimen/spacing_small"
       android:layout_marginEnd="@dimen/spacing_24"
-      android:hint="Masukan"
+      android:hint="@string/general_text_input"
       android:textColorHint="@color/neutral_00"
       app:boxBackgroundColor="@color/neutral_80"
       app:boxCornerRadiusBottomEnd="@dimen/spacing_small"

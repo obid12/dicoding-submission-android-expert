@@ -35,13 +35,23 @@ import javax.inject.Inject
 
 class FavoriteFragment : Fragment() {
 
-  private lateinit var binding: FragmentFavoriteBinding
+
+  private var _binding: FragmentFavoriteBinding? = null
+  private val binding get() = _binding!!
   private var adapter: UserFavoriteAdapter? = null
+  private var shimmerAdapter: ShimmerAdapter? = null
 
   @Inject
   lateinit var factory: ViewModelFactory
 
   private val viewModel: FavoriteViewModel by viewModels { factory }
+
+  override fun onDestroy() {
+    super.onDestroy()
+    _binding = null
+    adapter = null
+    shimmerAdapter = null
+  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -62,7 +72,7 @@ class FavoriteFragment : Fragment() {
     savedInstanceState: Bundle?
   ): View {
 
-    binding = FragmentFavoriteBinding.inflate(layoutInflater, container, false)
+    _binding = FragmentFavoriteBinding.inflate(layoutInflater, container, false)
     setupAdapter()
     observe()
     setupToolBar()
@@ -145,17 +155,17 @@ class FavoriteFragment : Fragment() {
   private fun gotoDetailUser() {
     adapter = UserFavoriteAdapter(OnclickListener {
       val request = Builder
-        .fromUri(Uri.parse("android-app://com.obidia.app/detail_fragment/"+false+"?userName="+it.login+"&avatarUrl="+it.avatarUrl))
+        .fromUri(Uri.parse("android-app://com.obidia.app/detail_fragment/" + false + "?userName=" + it.login + "&avatarUrl=" + it.avatarUrl))
         .build()
       findNavController().navigate(request)
     })
   }
 
   private fun setupShimmerAdapter() {
-    val adapter = ShimmerAdapter(layout.shimmer_item_search_user, 10)
+    shimmerAdapter = ShimmerAdapter(layout.shimmer_item_search_user, 10)
     binding.rvUserShimmer.let {
       it.layoutManager = LinearLayoutManager(requireContext())
-      it.adapter = adapter
+      it.adapter = shimmerAdapter
     }
   }
 
