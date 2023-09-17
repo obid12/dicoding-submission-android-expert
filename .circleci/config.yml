@@ -11,9 +11,9 @@ jobs:
       JAVA_HOME: 'C:\\tools\\jdk\\jdk-17.0.8.7-hotspot\\'
     steps:
       - checkout
-      - run:
-          name: Set up JDK 17
-          command: echo 'export JAVA_HOME=C:\tools\jdk\jdk-17.0.8.7-hotspot\' >> $BASH_ENV
+#      - run:
+#          name: Set up JDK 17
+#          command: echo 'export JAVA_HOME=C:\tools\jdk\jdk-17.0.8.7-hotspot\' >> $BASH_ENV
       - run:
           name: Verify JDK Version
           command: java -version
