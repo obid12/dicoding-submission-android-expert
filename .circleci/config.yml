@@ -8,12 +8,12 @@ jobs:
     executor: android/android
     environment:
       ANDROID_HOME: 'C\:\\Users\\GLI\\AppData\\Local\\Android\\Sdk'
-      JAVA_HOME: 'C:\Users\\GLI\\jdks\\corretto-17.0.8.1'
+      JAVA_HOME: 'C:\tools\jdk\jdk-17.0.8.7-hotspot\'
     steps:
       - checkout
       - run:
           name: Set up JDK 17
-          command: echo 'export JAVA_HOME=C:/Users/GLI/jdks/corretto-17.0.8.1' >> $BASH_ENV
+          command: echo 'export JAVA_HOME=C:\tools\jdk\jdk-17.0.8.7-hotspot\' >> $BASH_ENV
       - run:
           name: Verify JDK Version
           command: java -version
