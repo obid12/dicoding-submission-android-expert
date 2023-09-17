@@ -8,7 +8,7 @@ jobs:
     executor: android/android
     environment:
       ANDROID_HOME: 'C\:\\Users\\GLI\\AppData\\Local\\Android\\Sdk'
-      JAVA_HOME: 'C:\Users\GLI\.jdks\corretto-17.0.8.1'
+      JAVA_HOME: 'C:\Users\\GLI\\.jdks\\corretto-17.0.8.1'
     steps:
       - checkout
 #      - run:
