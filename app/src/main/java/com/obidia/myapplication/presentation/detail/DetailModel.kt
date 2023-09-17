@@ -6,19 +6,19 @@ import javax.inject.Inject
 
 class DetailModel @Inject constructor() {
 
-  var list: ArrayList<AtributModel> = arrayListOf()
+  private var list: ArrayList<AttributeModel> = arrayListOf()
 
-  data class AtributModel(
+  data class AttributeModel(
     val dataText: String,
     val text: String
   )
 
-  fun transform(repository: String, followers: String, following: String): ArrayList<AtributModel> {
+  fun transform(repository: String, followers: String, following: String): ArrayList<AttributeModel> {
     list.run {
       clear()
-      add(AtributModel(repository, "Repository"))
-      add(AtributModel(followers, "Followers"))
-      add(AtributModel(following, "Following"))
+      add(AttributeModel(repository, "Repository"))
+      add(AttributeModel(followers, "Followers"))
+      add(AttributeModel(following, "Following"))
     }
 
     return list

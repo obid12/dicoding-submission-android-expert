@@ -23,6 +23,11 @@ android {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
+
+    debug {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
   }
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_18
@@ -78,4 +83,11 @@ dependencies {
 
   //view binding
   implementation 'com.android.databinding:viewbinding:8.1.1'
+
+  //sql Cipher
+  implementation "net.zetetic:android-database-sqlcipher:4.4.0"
+  implementation "androidx.sqlite:sqlite-ktx:2.1.0"
+
+  //leak canary
+  debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
 }

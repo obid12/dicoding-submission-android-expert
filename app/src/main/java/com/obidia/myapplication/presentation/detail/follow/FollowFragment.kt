@@ -25,18 +25,25 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class FollowFragment : Fragment() {
 
-  private lateinit var binding: FragmentFollowBinding
+  private var _binding: FragmentFollowBinding? = null
+  private val binding get() = _binding!!
   private val viewModel: FollowViewModel by viewModels()
   private var adapter: UserSearchAdapter? = null
 
   @Inject
   lateinit var model: FollowModel
 
+  override fun onDestroy() {
+    super.onDestroy()
+    _binding = null
+    adapter = null
+  }
+
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    binding = FragmentFollowBinding.inflate(layoutInflater, container, false)
+    _binding = FragmentFollowBinding.inflate(layoutInflater, container, false)
     loadArguments()
     loadData()
     observe()

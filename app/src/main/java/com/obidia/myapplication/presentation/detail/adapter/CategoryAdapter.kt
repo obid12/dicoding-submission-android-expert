@@ -25,10 +25,6 @@ class CategoryAdapter(manager: FragmentManager, lifecycle: Lifecycle) :
     return mFragmentTitleList[position]
   }
 
-  fun getFragmentAt(position: Int): Fragment {
-    return mFragmentList[position]
-  }
-
   override fun getItemCount(): Int {
     return mFragmentList.size
   }
