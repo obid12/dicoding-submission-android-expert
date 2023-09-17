@@ -10,8 +10,9 @@ jobs:
       ANDROID_HOME: 'C\:\\Users\\GLI\\AppData\\Local\\Android\\Sdk'
     steps:
       - checkout
-      - setup-java:
-          jdk-version: 17
+      - run:
+          name: Set up JDK 17
+          command: echo 'export JAVA_HOME=C:/Users/GLI/jdks/corretto-17.0.8.1' >> $BASH_ENV
       - run:
           name: Verify JDK Version
           command: java -version
