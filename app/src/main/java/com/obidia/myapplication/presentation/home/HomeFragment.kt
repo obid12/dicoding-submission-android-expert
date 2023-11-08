@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
 
   private fun setupToolBar() {
     binding.toolbarView.let {
-      it.imgToolbar.setImageResource(R.drawable.ic_github_mark_white)
+      it.imgToolbar.setImageResource(R.drawable.ic_github_mark)
       it.toolbarMenu.run {
         setImageResource(R.drawable.ic_search)
         setOnClickListener {

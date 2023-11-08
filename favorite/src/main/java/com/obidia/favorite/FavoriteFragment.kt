@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -85,11 +86,12 @@ class FavoriteFragment : Fragment() {
     binding.toolbarView.let {
       it.titleToolbar.text = getString(string.toolbar_title_favorite)
       it.imgToolbar.run {
-        setImageResource(R.drawable.ic_back_white)
+        setImageResource(R.drawable.ic_back)
         setOnClickListener {
           findNavController().navigateUp()
         }
       }
+      it.toolbarMenu.isGone = true
     }
   }
 

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/neutral_00"
     >
 
   <androidx.appcompat.widget.Toolbar
@@ -38,7 +37,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginStart="@dimen/spacing_normal"
         android:includeFontPadding="false"
-        android:textColor="@color/neutral_80"
+        android:textColor="@color/neutral_00"
         android:visibility="visible"
         tools:text="apa aja boleh"
         />

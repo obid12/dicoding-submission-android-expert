@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
+import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -88,11 +89,12 @@ class DetailFragment : Fragment() {
       it.titleToolbar.text =
         if (args.isFromBottomSheet) getString(string.toolbar_title_profile) else getString(string.toolbar_title_detail)
       it.imgToolbar.run {
-        setImageResource(R.drawable.ic_back_white)
+        setImageResource(R.drawable.ic_back)
         setOnClickListener {
           findNavController().navigateUp()
         }
       }
+      it.toolbarMenu.isGone = true
     }
   }
 
