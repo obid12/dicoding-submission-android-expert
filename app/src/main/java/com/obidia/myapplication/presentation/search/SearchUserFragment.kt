@@ -193,7 +193,6 @@ class SearchUserFragment : Fragment() {
       editText?.setText("")
       requestFocus()
     }
-
   }
 
   private fun View.hideKeyboard() {

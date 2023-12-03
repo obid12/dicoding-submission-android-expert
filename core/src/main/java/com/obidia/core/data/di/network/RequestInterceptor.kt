@@ -7,7 +7,7 @@ class RequestInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val newReq = chain.request().newBuilder().addHeader(
             "Authorization",
-            "token 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"
+            "token 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"
         ).build()
 
         return chain.proceed(newReq)

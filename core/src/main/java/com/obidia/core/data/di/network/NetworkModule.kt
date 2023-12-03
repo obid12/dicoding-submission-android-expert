@@ -16,7 +16,6 @@ import java.util.concurrent.TimeUnit
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
   @Provides
   fun provideRetrofit(okHttp: OkHttpClient, @ApplicationContext context: Context): Retrofit {
     return Retrofit.Builder().apply {
