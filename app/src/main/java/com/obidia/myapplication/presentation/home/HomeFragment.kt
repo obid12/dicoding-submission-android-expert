@@ -69,7 +69,7 @@ class HomeFragment : Fragment() {
     adapterShimmer = ShimmerAdapter(layout.shimmer_item_search_user, 10)
     binding.rvUserShimmer.let {
       it.layoutManager = LinearLayoutManager(requireContext())
-      it.adapter = adapterShimmer
+      it.adapter =  adapterShimmer
     }
   }
 
