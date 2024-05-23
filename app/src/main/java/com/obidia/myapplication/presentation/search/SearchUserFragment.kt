@@ -164,7 +164,7 @@ class SearchUserFragment : Fragment() {
     }
   }
 
-  private fun showContent(index: Int) {
+  private fun showContent(index: Int)  {
     binding.animator.displayedChild = index
   }
 
