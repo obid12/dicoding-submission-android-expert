@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
     return binding.root
   }
 
-  private fun showButtomNavigation() {
+  private fun showButtomNavigation(){
     (activity as MainActivity).setBottomNavigationVisibility(true)
   }
 
